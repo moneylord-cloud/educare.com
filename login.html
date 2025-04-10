@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uganda School Management System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --secondary: #FF6584;
+            --accent: #42C2FF;
+            --dark: #2D3748;
+            --light: #F7FAFC;
+            --success: #48BB78;
+            --warning: #ED8936;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            display: flex;
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .left-panel {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .right-panel {
+            flex: 1;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .left-panel h1 {
+            color: white;
+        }
+        
+        p {
+            color: var(--dark);
+            opacity: 0.8;
+            margin-bottom: 30px;
+        }
+        
+        .left-panel p {
+            color: white;
+            opacity: 0.9;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #E2E8F0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input:focus, select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+        }
+        
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #5a52e0;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f0f0ff;
+        }
+        
+        .toggle-form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .toggle-form a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .features {
+            margin-top: 40px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+          border-radius:5px;
+          width:50px;
+          display:block;
+        }
+        
+        .logo-text {
+            font-weight: 700;
+          font-family:'Playfair Display', serif;
+          font-size: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .left-panel, .right-panel {
+                padding: 30px;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <div class="logo">
+                <img src="Assets/SJPC_Logo_2025@4x.png" alt="Logo">
+                <span class="logo-text">EduCare</span>
+            </div>
+            <h1 class="animate">Comprehensive School Management Solution</h1>
+            <p class="animate delay-1">Streamline your school administration, student management, and academic processes with our all-in-one platform designed specifically for Ugandan schools.</p>
+            
+            <div class="features">
+                <div class="feature animate delay-2">
+                    <div class="feature-icon">📊</div>
+                    <div>
+                        <h3>Advanced Analytics</h3>
+                        <p>Real-time insights into school performance</p>
+                    </div>
+                </div>
+                <div class="feature animate delay-3">
+                    <div class="feature-icon">👨‍🎓</div>
+                    <div>
+                        <h3>Student Management</h3>
+                        <p>Comprehensive student records and tracking</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="right-panel">
+            <!-- Login Form -->
+            <div id="login-form">
+                <h1>Welcome Back!</h1>
+                <p>Login to access your school management dashboard</p>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="login-email">Email Address</label>
+                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn-primary">Login</button>
+                    </div>
+                    
+                    <div class="toggle-form">
+                        <p>Don't have an account? <a href="#" id="show-signup">Sign Up</a></p>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Signup Form -->
+            <div id="signup-form" class="hidden">
+                <h1>Create Account</h1>
+                <p>Register your school to get started</p>
+                
+                <form>
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-email">Email Address</label>
+                        <input type="email" id="signup-email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-phone">Phone Number</label>
+                        <input type="tel" id="signup-phone" placeholder="Enter your phone number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-school-id">School ID (if available)</label>
+                        <input type="text" id="signup-school-id" placeholder="Enter school identification number">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-region">Region</label>
+                        <select id="signup-region" required>
+                            <option value="">Select Region</option>
+                            <option value="central">Central Region</option>
+                            <option value="eastern">Eastern Region</option>
+                            <option value="northern">Northern Region</option>
+                            <option value="western">Western Region</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-school">School</label>
+                        <select id="signup-school" required>
+                            <option value="">Select School</option>
+                            <!-- Schools will be populated based on region selection -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" placeholder="Create password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signup-confirm-password">Confirm Password</label>
+                        <input type="password" id="signup-confirm-password" placeholder="Confirm password" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn-primary">Create Account</button>
+                    </div>
+                    
+                    <div class="toggle-form">
+                        <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle between login and signup forms
+        document.getElementById('show-signup').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('signup-form').classList.remove('hidden');
+        });
+        
+        document.getElementById('show-login').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('signup-form').classList.add('hidden');
+            document.getElementById('login-form').classList.remove('hidden');
+        });
+        
+        // School data by region
+        const schoolsByRegion = {
+            central: [
+                "Kampala Parents School",
+                "Gayaza High School",
+                "King's College Budo",
+                "St. Mary's College Kisubi",
+                "Nabisunsa Girls School",
+                "Makerere College School",
+                "Mt. St. Mary's Namagunga",
+                "Uganda Martyrs SS Namugongo",
+                "Seeta High School",
+                "Trinity College Nabbingo"
+            ],
+            eastern: [
+                "Busoga College Mwiri",
+                "Teso College Aloet",
+                "Namilyango College",
+                "St. Mary's College Lugazi",
+                "Wanyange Girls School",
+                "Kiira College Butiki",
+                "Iganga Secondary School",
+                "Mbale Secondary School",
+                "Buddo Secondary School",
+                "Jinja Secondary School"
+            ],
+            northern: [
+                "St. Mary's College Lacor",
+                "Sacred Heart Secondary School",
+                "Gulu High School",
+                "Lira Town College",
+                "Muni Girls Secondary School",
+                "Aduku Secondary School",
+                "St.John Paul II Colledge",
+                "Soroti Secondary School",
+                "St. Katherine Secondary School",
+                "Kitgum High School"
+            ],
+            western: [
+                "Mbarara High School",
+                "Bweranyangi Girls School",
+                "Kigezi High School",
+                "Ntare School",
+                "St. Leo's College Kyegobe",
+                "Kabarole Secondary School",
+                "Rwenzori High School",
+                "Kasese Secondary School",
+                "St. Henry's College Kitovu",
+                "Maryhill High School"
+            ]
+        };
+        
+        // Populate schools based on region selection
+        document.getElementById('signup-region').addEventListener('change', function() {
+            const region = this.value;
+            const schoolSelect = document.getElementById('signup-school');
+            
+            // Clear previous options
+            schoolSelect.innerHTML = '<option value="">Select School</option>';
+            
+            if (region && schoolsByRegion[region]) {
+                schoolsByRegion[region].forEach(school => {
+                    const option = document.createElement('option');
+                    option.value = school.toLowerCase().replace(/\s+/g, '-');
+                    option.textContent = school;
+                    schoolSelect.appendChild(option);
+                });
+                
+                // Add option for school not listed
+                const otherOption = document.createElement('option');
+                otherOption.value = 'other';
+                otherOption.textContent = 'My school is not listed';
+                schoolSelect.appendChild(otherOption);
+            }
+        });
+        
+        // Handle school not listed case
+        document.getElementById('signup-school').addEventListener('change', function() {
+            if (this.value === 'other') {
+                const schoolNameInput = document.createElement('input');
+                schoolNameInput.type = 'text';
+                schoolNameInput.id = 'signup-school-name';
+                schoolNameInput.placeholder = 'Enter your school name';
+                schoolNameInput.style.width = '100%';
+                schoolNameInput.style.padding = '15px';
+                schoolNameInput.style.border = '2px solid #E2E8F0';
+                schoolNameInput.style.borderRadius = '10px';
+                schoolNameInput.style.marginTop = '10px';
+                
+                const schoolGroup = this.parentNode;
+                if (!document.getElementById('signup-school-name')) {
+                    schoolGroup.appendChild(schoolNameInput);
+                }
+            } else {
+                const existingInput = document.getElementById('signup-school-name');
+                if (existingInput) {
+                    existingInput.remove();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

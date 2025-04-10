@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slideshow </title>
+    <style>
+        :root {
+            --primary: #e8c6b0;
+            --secondary: #d4a373;
+            --dark: #3a2e24;
+            --light: #f8f1e9;
+            --accent: #c08552;
+        }
+        
+        /* Previous CSS styles remain the same */
+        
+        /* New Slideshow Styles */
+        .slideshow-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 2rem auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .mySlides {
+            display: none;
+            width: 100%;
+            height: 500px;
+        }
+        
+        .mySlides img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .slideshow-caption {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(58, 46, 36, 0.7);
+            color: white;
+            padding: 15px 0;
+        }
+        
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.3);
+        }
+        
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+        
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+        
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+        
+        .slideshow-dots {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        
+        .active, .dot:hover {
+            background-color: var(--accent);
+        }
+        
+        @media (max-width: 768px) {
+            .mySlides {
+                height: 300px;
+            }
+            
+            .slideshow-caption {
+                font-size: 0.9rem;
+                padding: 10px 0;
+            }
+        }
+    </style>
+    <!-- Previous head content remains the same -->
+</head>
+<body>
+    <!-- Previous header and nav content remains the same -->
+    
+    <!-- Add this slideshow section below the header/navigation -->
+    <section id="featured">
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="Assets/picture 1" alt="Class of 2024">
+                <div class="slideshow-caption">Always welcome to St John Paul II College Gulu</div>
+            </div>
+            
+            <div class="mySlides fade">
+                <img src="Assets/222.jpg" alt="Liturgy">
+                <div class="slideshow-caption">Liturgy and Religion is Cherished alot </div>
+            </div>
+            
+            <div class="mySlides fade">
+                <img src="Assets/333.jpg" alt="Music, Dance and Drama">
+                <div class="slideshow-caption">The music and dance makes your day unforgettable</div>
+            </div>
+
+            
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+        </div>
+        
+        <div class="slideshow-dots">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </section>
+    
+    <!-- Rest of your existing HTML content remains the same -->
+    
+    <script>
+        // Slideshow functionality
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+        
+        // Auto-advance slides every 5 seconds
+        setInterval(function() {
+            plusSlides(1);
+        }, 5000);
+    </script>
+</body>
+</html>
